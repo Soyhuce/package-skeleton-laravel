@@ -11,6 +11,7 @@ permissions:
 jobs:
   php-code-styling:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Checkout code
@@ -18,7 +19,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Run PHP CS Fixer
+      - name: Fix PHP code style issues
         uses: docker://oskarstark/php-cs-fixer-ga
         with:
           args: --config=.php-cs-fixer.dist.php --allow-risky=yes
